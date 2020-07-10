@@ -1,9 +1,16 @@
 class Contact:
-    def __init__(self, name, address, phone, email):
+    def __init__(self, name, address, phone, email, id=None):
+        self.id=id
         self.name = name
         self.address = address
         self.phone = phone
         self.email = email
+
+    def set_id(self, id):
+        self.id = id
+    
+    def get_id(self):
+        return self.id
 
     def set_name(self, name):
         self.name = name
@@ -30,5 +37,5 @@ class Contact:
         return self.email
 
     def __str__(self):
-        return (str(self.name) + ', ' + str(self.address) + ', ' + 
+        return (str(self.id) + ', ' + str(self.name) + ', ' + str(self.address) + ', ' + 
             str(self.phone) + ', ' + str(self.email))

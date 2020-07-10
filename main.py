@@ -1,4 +1,5 @@
 from contact import Contact
+from os import system
 import database
 
 def menu():
@@ -19,12 +20,12 @@ def menu():
 
 def choose(choice):
     if choice == 1:
-        name = input('Enter name: ')
-        address = input('Enter address: ')
-        phone = input('Enter phone: ')
-        email = input('Enter email: ')
-        c = Contact(name, address, phone, email)
-        database.insert_contact(c)
+        system('add_gui.py')
+    elif choice == 2:
+        id = int(input("Enter Contact ID: "))
+        database.delete_contact(id)
+    elif choice ==4:
+        system('view_gui.py')            
     elif choice == 5:
         will_continue = check_certainty()
         if will_continue:
@@ -41,5 +42,5 @@ def check_certainty():
     else:
         return False
 
-
-choose(menu())
+while True:
+    choose(menu())

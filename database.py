@@ -19,7 +19,8 @@ def insert_contact(c):
     db.commit()
 
 def delete_contact(id):
-    pass
+    cursor.execute("DELETE FROM `contacts` WHERE id=%s", (id, ))
+    db.commit()
 
 def update_contact(id, c):
     pass
@@ -27,5 +28,10 @@ def update_contact(id, c):
 def clear_contacts():
     cursor.execute("DELETE FROM contacts")
     db.commit()
+
+def all_contacts():
+    cursor.execute("SELECT * FROM contacts")
+    return cursor
+
 
 

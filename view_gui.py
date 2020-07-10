@@ -29,17 +29,8 @@ tree.heading("3", text='Address')
 tree.heading("4", text='Phone')
 tree.heading("5", text='Email')
 
-contacts = database.all_contacts()
-contact_list = []
-for row in contacts.fetchall():
-    contact_id = row[0]
-    contact_name = row[1]
-    contact_address = row[2]
-    contact_phone = row[3]
-    contact_email = row[4]
-    contact_list.append(Contact(contact_name, contact_address,
-                contact_phone, contact_email, contact_id))
-    
+contact_list = database.all_contacts()   
+ 
 count = 0
 for contact in contact_list:
     tree.insert('', count, values=(contact.get_id(),  

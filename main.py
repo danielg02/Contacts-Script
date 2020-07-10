@@ -1,7 +1,7 @@
 from contact import Contact
 from os import system
 import database
-
+from update_gui import UpdateGUI
 def menu():
     choice = 0
     menu_choices = ('Press:' + 
@@ -24,7 +24,14 @@ def choose(choice):
     elif choice == 2:
         id = int(input("Enter Contact ID: "))
         database.delete_contact(id)
-    elif choice ==4:
+    elif choice == 3:
+        try: 
+            id = int(input('Enter Contact ID: '))
+            contact = database.get_contact(id)
+            UpdateGUI(contact, id)
+        except IndexError:
+            print("No Contacts Available to Update")
+    elif choice == 4:
         system('view_gui.py')            
     elif choice == 5:
         will_continue = check_certainty()
@@ -44,3 +51,6 @@ def check_certainty():
 
 while True:
     choose(menu())
+
+# TODO: Error Checking
+# TODO: Clean up code 
